@@ -4,12 +4,12 @@ import time
 
 date_time = DateTime()
 usb = PowerControl()
-time = date_time.get_time().split(':')
+time_now = date_time.get_time().split(':')
 
 for i in range(3):
-    time[i] = int(time[i])
+    time_now[i] = int(time_now[i])
 
 while True:
-    if time[0] == 14 and time[1] >= 25:
+    if time_now[0] == 14 and time_now[1] >= 25:
         usb.usb_power_off()
     time.sleep(30)
