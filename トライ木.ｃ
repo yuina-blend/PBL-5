@@ -1,0 +1,227 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+# define	NUM_ALPHABET	25
+
+typedef struct  node {
+        int n;
+	char word;
+	bool	isEndOfWord;
+	struct node	*child[NUM_ALPHABET];
+	struct node *parent;
+} NODE;
+NODE *tmp;
+int wordcheck(NODE *node , char *word){
+   int i,m;
+   i=0;
+   m=0;
+   while(node->isEndOfWord==false&&i<node->n){
+    	
+        if(node->child[i]->word==word[m]){
+            node=node->child[i];
+            i=0;
+            m++;
+            }else{
+        i++;
+        }
+    }
+    tmp=node;
+   return m;
+}
+NODE *newnode(char word){
+  NODE *add;
+  int i=0;
+
+  add = (NODE*)malloc(sizeof(NODE));
+  if(add == NULL){ 
+    return NULL;
+  }
+  add->n=0;
+  add->word=word;
+  add->isEndOfWord = false;
+    while(i<NUM_ALPHABET){
+    	add->parent=NULL;
+  	add->child[i]=NULL;
+  	i++;
+  }
+  return add;
+}
+
+NODE *insert(NODE *root, char *word){
+    int i,m,n;
+    NODE *node;
+    n=0;
+    node=root;
+    m=wordcheck(node,word);
+   node=tmp;
+    if(word[m]=='\0'){
+        i=0;
+        while(i<node->n){
+            if(node->child[i]->word=='#'){
+            	 printf("すでに挿入済みです\n");
+                return (root);
+            }
+            i++;
+        }
+                node->child[i]=newnode('#');
+                node->child[i]->isEndOfWord=true;
+                
+                node->n++;
+                node->child[i]->parent=node;
+                printf("%sを挿入しました\n",word);
+        return (root);
+    }else{
+       while(word[m]!='\0'){
+           if(node->child[n]==(void *)0){
+           node->child[n]=newnode(word[m]);
+           node->n++;
+           node->child[n]->parent=node;
+           node=node->child[n];
+           m++;
+           n=0;
+           }else{
+               n++;
+           }
+       } 
+        node->child[0]=newnode('#');
+        node->child[0]->isEndOfWord=true;
+        
+        node->n++;
+        node->child[0]->parent=node;
+        printf("%sを挿入しました\n",word);
+        return root;
+    }
+
+    
+return root;
+}
+
+NODE *delete(NODE *root, char *word){
+   int i,m,n,s;
+   NODE *node;
+   n=0;
+   m=wordcheck(root,word);
+   node=tmp;
+   if(word[m]=='\0'){
+      i=0;
+      while(node->child[i]!=NULL){
+          if(node->child[i]->isEndOfWord==true){
+              free(node->child[i]);
+              node->child[i]=NULL;
+              node->n=node->n-1;              
+              while(node->n==0){
+              	if(node->word=='\0')break;
+                  tmp=node->parent;
+                  s=0;
+                  while(tmp->child[s]!=NULL){
+                      if(tmp->child[s]==node){
+                  free(node);
+                  tmp->child[s]=NULL;
+                  tmp->n=tmp->n-1;
+                  node=tmp;
+                      }
+                      s++;
+              }
+              
+          }
+          while(node->n>n){
+              if(node->child[n]==NULL){
+                  node->child[n]=node->child[n+1];
+                  node->child[n+1]=NULL;
+              }
+              n++;
+          }
+          printf("%sを削除しました\n",word);
+          return root;
+          
+      }
+      i++;
+      }
+   printf("%sはありません\n",word);
+   return root;
+    }else{
+        printf("%sはありません\n",word);
+        return root;
+    }
+}
+
+
+NODE *search(NODE *root, char *word){
+   NODE *node;
+   node=root;
+	int i,m;
+	 m=wordcheck(node,word);
+   node=tmp;
+   if(word[m]=='\0'){
+        i=0;
+        while(i<node->n){
+            if(node->child[i]->word=='#'){
+            	 printf("%sは挿入済みです\n",word);
+                return (root);
+            }
+            i++;
+        }
+      printf("%sはありません\n",word);
+        return (root);
+    }else{
+       printf("%sはありません\n",word);
+       return root;
+    }
+}
+
+
+void view(NODE *node,int d){
+    int i=0;
+    int p=0;
+    if(node->word=='\0'){
+    printf("root\n");
+    }
+    while(node->child[i]!=NULL)
+    {
+        p=0;
+        printf("	");
+		while(d>p) {
+		printf("    "); 
+		p++;
+		}
+        printf("%c\n",node->child[i]->word);
+        view(node->child[i],d+1);
+        i++;
+    }
+}
+
+int main(void){
+	int i;
+	char c[100];
+	NODE *root;
+    root =newnode('\0');
+        while(1){
+	printf("処理を選択 挿入:1 削除 :2 探索 :3 出力 :4 終了 :5\n");
+	scanf("%d",&i);
+	switch(i){
+	case 1:
+		printf("挿入する単語を入力\n");
+		scanf("%s",c);
+		root =insert(root,c);
+		break;
+	case 2:
+		printf("削除する単語を入力\n");
+		scanf("%s",c);
+		root =delete(root,c);
+		break;
+	case 3:
+		printf("探索する単語を入力\n");
+		scanf("%s",c);
+		root =search(root,c);
+		break;
+	case 4:
+            view(root,0);
+            break;
+   	 case 5:
+        	return 0;
+    		default:
+    		break;
+	}
+    }
+    return 0;
+}

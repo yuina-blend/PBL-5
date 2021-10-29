@@ -17,4 +17,5 @@ for i in range(num):
 
     time.sleep(10)
     i += 1
+    
 print("終了")
