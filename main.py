@@ -10,6 +10,7 @@ while True:
 
     for i in range(3):
         time_now[i] = int(time_now[i])
+    print(time_now)
     if time_now[0] == 14 and time_now[1] >= 30:
         usb.usb_power_off()
-    time.sleep(30)
+    time.sleep(10)
