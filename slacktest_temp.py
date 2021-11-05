@@ -1,5 +1,9 @@
-from slack import slack
+# from slack import slack
 
-notice = slack()
+# notice = slack()
 
-notice.slack("TEST POST")
+# notice.slack("TEST POST")
+
+from temphumid import pin
+
+p = pin(14)
