@@ -29,19 +29,12 @@ class pin:
         # read data using pin 14
         instance = dht11.DHT11(self.pin_num)
 
-before_result = 0.0
-while True:
-    result = instance.read()
-    if result.is_valid():
-        print("Last valid input: " + str(datetime.datetime.now()))
-    if abs(result.temperature - before_result) > 2.0:
+     result = instance.read()
+     if result.is_valid():
+       print("Last valid input: " + str(datetime.datetime.now()))
        print("Temperature: %d C" % result.temperature)
-       return result.temperature
        print("Humidity: %d %%" % result.humidity)
-       return result.humidity
-    before_result = result.temperature
-
-    time.sleep(60)
+       return result
 
 
 
