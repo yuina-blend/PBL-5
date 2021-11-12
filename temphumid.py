@@ -12,7 +12,7 @@ GPIO.cleanup()
 class pin:
     pin_num = int()
     def __init__(self, pin):
-        self.pin = pin_num
+        self.pin = pin
     def pinset(self):
         import RPi.GPIO as GPIO
         import dht11
