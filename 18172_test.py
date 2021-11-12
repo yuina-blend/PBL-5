@@ -22,5 +22,5 @@ pw = PowerControl()
 print("press enter: ")
 e = input()
 
-slack.slack(th_pin.pin())
+slack.slack(str(th_pin.pin()))
 pw.usb_power_off()
