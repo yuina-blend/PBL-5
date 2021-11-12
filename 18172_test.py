@@ -16,7 +16,7 @@ from PowerControl import PowerControl
 from temphumid import pin
 from slack import slack
 
-th_pin = pin()
+th_pin = pin(14)
 pw = PowerControl()
 
 print("press enter: ")
