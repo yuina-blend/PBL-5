@@ -18,4 +18,4 @@ print("press enter: ")
 enter = input()
 
 power = PowerControl()
-power.usb_power_off()
+power.usb_power_on()
