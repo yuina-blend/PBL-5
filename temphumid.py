@@ -26,7 +26,7 @@ class pin:
         GPIO.setmode(GPIO.BCM)
         GPIO.cleanup()
         # read data using pin 14
-        instance = dht11.DHT11(self.pin_num)
+        instance = dht11.DHT11(self.pin)
 
         result = instance.read()
         if result.is_valid():
