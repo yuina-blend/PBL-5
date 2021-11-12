@@ -23,6 +23,6 @@ print("press enter: ")
 e = input()
 
 s = th_pin.pinset()
-print(type(s))
+print(s)
 # slack.slack(str(th_pin.pin()[0]))
 # pw.usb_power_off()
