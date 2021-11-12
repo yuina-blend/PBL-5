@@ -13,9 +13,14 @@
 # print(dt.get_date_time())
 
 from PowerControl import PowerControl
+from temphumid import pin
+from slack import slack
+
+th_pin = pin()
+pw = PowerControl()
 
 print("press enter: ")
-enter = input()
+e = input()
 
-power = PowerControl()
-power.usb_power_on()
+slack.slack(th_pin.pin())
+pw.usb_power_off()
