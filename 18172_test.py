@@ -12,10 +12,25 @@
 # print(dt.get_time())
 # print(dt.get_date_time())
 
-from PowerControl import PowerControl
+# from PowerControl import PowerControl
+from th import pin
+from slack import slack
 
-print("press enter: ")
-enter = input()
+th_pin = pin(14)
+temp, humid = th_pin.pinset()
+temp = str(temp)
+humid = str(humid)
+slack = slack()
+slack.slack("temp: " + temp + "humid : " + humid)
+# pw = PowerControl()
 
-power = PowerControl()
-power.usb_power_on()
+# while True:
+#     print("press on or off: ")
+#     word = input()
+#     if word == "on":
+#         pw.usb_power_on()
+#     elif word == "off":
+#         pw.usb_power_off()
+#     else:
+#         print("typo")
+# pw.usb_power_off()
