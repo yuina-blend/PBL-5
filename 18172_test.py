@@ -19,10 +19,13 @@ from slack import slack
 th_pin = pin(14)
 pw = PowerControl()
 
-print("press enter: ")
-e = input()
-
-s = th_pin.pinset()
-print(s)
-# slack.slack(str(th_pin.pin()[0]))
+while True:
+    print("press on or off: ")
+    word = input()
+    if word == "on":
+        pw.usb_power_on()
+    elif word == "off":
+        pw.usb_power_off()
+    else:
+        print("typo")
 # pw.usb_power_off()
