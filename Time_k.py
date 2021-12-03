@@ -1,24 +1,29 @@
 from DateTime import DateTime
 import time
 
-
+t = DateTime()
 
 class Time_k:
     def __init__(self):
-        self.start = list()
-        self.end = list()
-
-    def kyusui(self):
-        t = DateTime()
         self.start = t.get_time()
         self.start = list(map(int, self.start.split(':')))
-        print("start")
-        print(self.start)
+        self.now = list()
+        self.otime = list()
 
-        time.sleep(60)
+    def kyusui(self):
+        self.now = t.get_time()
+        self.now = list(map(int, self.now.split(':')))
 
-        self.end = t.get_time()
-        self.end = list(map(int, self.end.split(':')))
-        if self.end[-2] == self.start[-2]+1:
-            print(self.end)
-            print("end")
+        print(self.now)
+
+    def check(self):
+        self.otime = [x1 - x2 for (x1, x2) in zip(self.now, self.start)]
+        print(self.otime)
+        print(self.otime[2])
+
+        if self.otime[2] > 30:
+            return self.otime
+        else:
+            return
+
+        
