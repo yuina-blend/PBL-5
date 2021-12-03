@@ -1,17 +1,15 @@
-from DateTime import DateTime
-import time
-
-t = DateTime()
-
 class Time_k:
+    import time
+    from DateTime import DateTime
+    t = DateTime()
     def __init__(self):
-        self.start = t.get_time()
+        self.start = self.t.get_time()
         self.start = list(map(int, self.start.split(':')))
         self.now = list()
         self.otime = list()
 
     def kyusui(self):
-        self.now = t.get_time()
+        self.now = self.t.get_time()
         self.now = list(map(int, self.now.split(':')))
 
         print(self.now)
@@ -21,7 +19,7 @@ class Time_k:
         print(self.otime)
         print(self.otime[2])
 
-        if self.otime[2] > 30:
+        if self.otime[2] > 3:
             return self.otime
         else:
-            return
+            return "on"
