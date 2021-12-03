@@ -34,4 +34,4 @@ class pin:
             print("Last valid input: " + str(datetime.datetime.now()))
             print("Temperature: %d C" % result.temperature)
             print("Humidity: %d %%" % result.humidity)
-            return result.temperature, result.humidity
+            return result

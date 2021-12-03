@@ -1,24 +1,25 @@
-from DateTime import DateTime
-import time
-
-
-
 class Time_k:
+    import time
+    from DateTime import DateTime
+    t = DateTime()
     def __init__(self):
-        self.start = list()
-        self.end = list()
+        self.start = self.t.get_time()
+        self.start = list(map(int, self.start.split(':')))
+        self.now = list()
+        self.otime = list()
 
     def kyusui(self):
-        t = DateTime()
-        self.start = t.get_time()
-        self.start = list(map(int, self.start.split(':')))
-        print(self.start)
-        print(f"{self.start[0]}:{self.start[1]}:{self.start[2]} 開始")
+        self.now = self.t.get_time()
+        self.now = list(map(int, self.now.split(':')))
 
-        time.sleep(60)
+        print(self.now)
 
-        self.end = t.get_time()
-        self.end = list(map(int, self.end.split(':')))
-        print(self.end)
-        if self.end[-2] == self.start[-2]+1:
-            print(f"{self.end[0]}:{self.end[1]}:{self.end[2]} 終了")
+    def check(self):
+        self.otime = [x1 - x2 for (x1, x2) in zip(self.now, self.start)]
+        print(self.otime)
+        print(self.otime[2])
+
+        if self.otime[2] > 3:
+            return self.otime
+        else:
+            return "on"
