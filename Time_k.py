@@ -19,11 +19,13 @@ class Time_k:
             self.now[2] += 60
             self.otime[2] = self.now[2] - self.start[2]
             self.now[1] -= 1
+
             if self.now[1] < self.start[1]:
                 self.now[1] += 60
                 self.otime[1] = self.now[1] - self.start[1]
                 self.now[0] -= 1
                 self.otime[0] = self.now[0] - self.start[0]
+            
             else:
                 self.otime[1] = self.now[1] - self.start[1]
                 self.otime[0] = self.now[0] - self.start[0]
