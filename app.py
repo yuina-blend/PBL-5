@@ -14,16 +14,20 @@ def message_hello(message, say):
     print("うんち！")
     say(f"ばなな!")
 
+from th import pin
+p = pin(14)
+
 @app.message("now")
 def message_now(message, say):
-    from th import pin
-    p = pin(14)
+    # from th import pin
+    # p = pin(14)
+    global p
     temphumid = p.pinset()
     print(str(temphumid[0]), str(temphumid[1]))
     notice = "温度: " + str(temphumid[0]) + ", 湿度: " + str(temphumid[1])
     print("reqested!")
     say(notice)
-    del p
+    # del p
 
 @app.message("poweroff")
 def message_poweroff(message, say):
