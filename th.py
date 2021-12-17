@@ -3,7 +3,6 @@ import dht11
 import time
 import datetime
 import math
-import sys
 
 # # initialize GPIO
 GPIO.setwarnings(False)
@@ -37,4 +36,3 @@ class pin:
             print("Humidity: %d %%" % result.humidity)
             return (result.temperature, result.humidity)
 
-    sys.exit()

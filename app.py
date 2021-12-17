@@ -23,6 +23,7 @@ def message_now(message, say):
     notice = "温度: " + str(temphumid[0]) + ", 湿度: " + str(temphumid[1])
     print("reqested!")
     say(notice)
+    del p
 
 @app.message("poweroff")
 def message_poweroff(message, say):
