@@ -30,7 +30,6 @@ class pin:
         instance = dht11.DHT11(self.pin)
 
         result = instance.read()
-        GPIO.cleanup()
         if result.is_valid():
             print("Last valid input: " + str(datetime.datetime.now()))
             print("Temperature: %d C" % result.temperature)
