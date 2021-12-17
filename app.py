@@ -19,7 +19,7 @@ def message_now(message, say):
     from th import pin
     p = pin(14)
     temphumid = p.pinset()
-    print(temphumid)
+    print(str(temphumid[0]), str(temphumid[1]))
     notice = "温度: " + str(temphumid[0]) + ", 湿度: " + str(temphumid[1])
     print("reqested!")
     say(notice)
