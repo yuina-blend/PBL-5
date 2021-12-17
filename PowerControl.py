@@ -15,6 +15,7 @@ class PowerControl:
         import subprocess
         subprocess.call(self.usb_on_cmd)
         print("USB Power ON.")
+        GPIO.cleanup()
 
     def usb_power_off(self):
         import subprocess
