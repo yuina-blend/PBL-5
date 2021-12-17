@@ -5,14 +5,23 @@ class Time_k:
     def __init__(self):
         self.start = self.t.get_time()
         self.start = list(map(int, self.start.split(':')))
-        self.now = list()
-        self.otime = list()
+        self.now = []
+        self.otime = []
 
     def kyusui(self):
         self.now = self.t.get_time()
         self.now = list(map(int, self.now.split(':')))
 
         print(self.now)
+
+    def reset(self):
+        for i in range(3):
+            self.otime[i] = 0
+        self.start = self.t.get_time()
+        self.start = list(map(int, self.start.split(':')))
+        print("reset")
+        print(self.otime)
+        
 
     def check(self):
         if self.now[2] < self.start[2]:
