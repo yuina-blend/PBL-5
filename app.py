@@ -42,3 +42,4 @@ def message_poweron(message, say):
 # アプリを起動します
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    print("unko")
