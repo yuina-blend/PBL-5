@@ -5,8 +5,8 @@ class Time_k:
     def __init__(self):
         self.start = self.t.get_time()
         self.start = list(map(int, self.start.split(':')))
-        self.now = list()
-        self.otime = list()
+        self.now = []
+        self.otime = []
 
     def kyusui(self):
         self.now = self.t.get_time()
@@ -14,12 +14,44 @@ class Time_k:
 
         print(self.now)
 
+    def reset(self):
+        for i in range(3):
+            self.otime[i] = 0
+        self.start = self.t.get_time()
+        self.start = list(map(int, self.start.split(':')))
+        print("reset")
+        print(self.otime)
+        
+
     def check(self):
-        self.otime = [x1 - x2 for (x1, x2) in zip(self.now, self.start)]
+        if self.now[2] < self.start[2]:
+            self.now[2] += 60
+            self.otime[2] = self.now[2] - self.start[2]
+            self.now[1] -= 1
+
+            if self.now[1] < self.start[1]:
+                self.now[1] += 60
+                self.otime[1] = self.now[1] - self.start[1]
+                self.now[0] -= 1
+                self.otime[0] = self.now[0] - self.start[0]
+            
+            else:
+                self.otime[1] = self.now[1] - self.start[1]
+                self.otime[0] = self.now[0] - self.start[0]
+
+        elif self.now[1] < self.start[1]:
+            self.now[1] += 60
+            self.otime[1] = self.now[1] - self.start[1]
+            self.now[0] -= 1
+            self.otime[0] = self.now[0] - self.start[0]
+
+        else:
+            self.otime = [x1 - x2 for (x1, x2) in zip(self.now, self.start)]
+            
         print(self.otime)
         print(self.otime[2])
 
-        if self.otime[2] > 3:
+        if self.otime[1] > 3:
             return self.otime
         else:
             return "on"
