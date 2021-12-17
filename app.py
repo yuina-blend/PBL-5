@@ -14,7 +14,7 @@ def message_hello(message, say):
     print("うんち！")
     say(f"ばなな!")
 
-@app.message("now")
+@app.message("cmd now")
 def message_now(message, say):
     from th import pin
     p = pin(14)
@@ -23,7 +23,7 @@ def message_now(message, say):
     print("reqested!")
     say(notice)
 
-@app.message("poweroff")
+@app.message("cmd poweroff")
 def message_poweroff(message, say):
     from PowerControl import PowerControl
     usb = PowerControl()
@@ -31,7 +31,7 @@ def message_poweroff(message, say):
     say("電源OFF")
     print("power off!")
 
-@app.message("poweron")
+@app.message("cmd poweron")
 def message_poweron(message, say):
     from PowerControl import PowerControl
     usb = PowerControl()
@@ -42,4 +42,3 @@ def message_poweron(message, say):
 # アプリを起動します
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
-    print("unko")
