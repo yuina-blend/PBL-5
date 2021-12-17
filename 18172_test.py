@@ -14,8 +14,12 @@
 
 from PowerControl import PowerControl
 
-print("press enter: ")
-enter = input()
+usb = PowerControl()
 
-power = PowerControl()
-power.usb_power_on()
+while True:
+    print("press on or off:")
+    s = input()
+    if s == "on":
+        usb.usb_power_on(17)
+    if s == "off":
+        usb.usb_power_off()

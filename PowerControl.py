@@ -7,7 +7,11 @@ class PowerControl:
     def __init__(self):
         pass
 
-    def usb_power_on(self):
+    def usb_power_on(self, GPIO_pin):
+        import RPi.GPIO as GPIO
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(GPIO_pin, GPIO.OUT)
+        GPIO.output(GPIO_pin, GPIO.HIGH)
         import subprocess
         subprocess.call(self.usb_on_cmd)
         print("USB Power ON.")
