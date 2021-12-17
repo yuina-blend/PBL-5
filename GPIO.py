@@ -9,8 +9,8 @@ GPIO.setup(PIN, GPIO.OUT)
 
 try:
     # 1秒ごとに点灯/消灯を繰り返す
-    while(True):
-        GPIO.output(PIN, GPIO.HIGH)
+    
+    GPIO.output(PIN, GPIO.HIGH)
 
 except KeyboardInterrupt:
     # Ctrl+Cで終了した場合、GPIO設定をクリア
