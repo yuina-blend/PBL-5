@@ -36,3 +36,7 @@ class pin:
             print("Humidity: %d %%" % result.humidity)
             return (result.temperature, result.humidity)
 
+    def __del__(self):
+        import RPi.GPIO as GPIO
+        GPIO.cleanup()
+
