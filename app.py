@@ -16,8 +16,10 @@ def message_hello(message, say):
 
 @app.message("now")
 def message_now(message, say):
+    from th import pin
+    tempphumid = pin(14)
     print("reqested!")
-    say("温度: any, 湿度: any")
+    say(tempphumid.pinset())
 
 # アプリを起動します
 if __name__ == "__main__":
