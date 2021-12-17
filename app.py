@@ -23,6 +23,22 @@ def message_now(message, say):
     print("reqested!")
     say(notice)
 
+@app.message("poweroff")
+def message_poweroff(message, say):
+    from PowerControl import PowerControl
+    usb = PowerControl()
+    usb.usb_power_off()
+    say("電源OFF")
+    print("power off!")
+
+@app.message("poweron")
+def message_poweron(message, say):
+    from PowerControl import PowerControl
+    usb = PowerControl()
+    usb.usb_power_on(17)
+    say("電源ON")
+    print("power on!")
+
 # アプリを起動します
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
