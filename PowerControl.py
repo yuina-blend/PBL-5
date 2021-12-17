@@ -10,12 +10,13 @@ class PowerControl:
     def usb_power_on(self, GPIO_pin):
         import RPi.GPIO as GPIO
         import time
+        import subprocess
+        subprocess.call(self.usb_on_cmd)
+        time.sleep(0.3)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(GPIO_pin, GPIO.OUT)
         GPIO.output(GPIO_pin, GPIO.HIGH)
         time.sleep(0.5)
-        import subprocess
-        subprocess.call(self.usb_on_cmd)
         print("USB Power ON.")
         GPIO.cleanup()
 
