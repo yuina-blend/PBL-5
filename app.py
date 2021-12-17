@@ -14,6 +14,11 @@ def message_hello(message, say):
     print("うんち！")
     say(f"ばなな!")
 
+@app.message("now")
+def message_now(message, say):
+    print("reqested!")
+    say("温度: any, 湿度: any")
+
 # アプリを起動します
 if __name__ == "__main__":
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
