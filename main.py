@@ -21,7 +21,7 @@ from subprocess import PIPE
 
 while True:
     try:
-        proc = subprocess.run(['python3', 'app.py'], stdout=PIPE, stderr=PIPE)
+        proc = subprocess.run(['python3', 'app.py'], stdout=PIPE, stderr=PIPE, shell=True)
         print('reset')
     except KeyboardInterrupt:
         import sys
