@@ -46,11 +46,11 @@ def message_poweron(message, say):
     say("電源ON")
     print("power on!")
 
-@app.message("!exit")
-def message_exit(message, say):
-    import sys
-    say('bot exited')
-    sys.exit()
+# @app.message("!exit")
+# def message_exit(message, say):
+#     import sys
+#     say('bot exited')
+#     sys.exit()
 
 # アプリを起動します
 if __name__ == "__main__":
