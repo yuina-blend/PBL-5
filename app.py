@@ -49,6 +49,7 @@ def message_poweron(message, say):
 @app.message("!exit")
 def message_exit(message, say):
     import sys
+    say('bot exited')
     sys.exit()
 
 # アプリを起動します
