@@ -48,10 +48,14 @@ def message_poweron(message, say):
 
 @app.message("!exit")
 def message_exit(message, say):
-    import os
+    import sys
     say('bot exited')
-    os._exit()
+    sys.exit()
 
 # アプリを起動します
 if __name__ == "__main__":
-    SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    try:
+        SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
+    except:
+        import sys
+        sys.exit()
