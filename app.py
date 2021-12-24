@@ -13,10 +13,10 @@ call_count = 0
 @app.message("hello")
 def message_hello(message, say):
     # イベントがトリガーされたチャンネルへ say() でメッセージを送信します
-    print("うんち！")
-    say(f"ばなな!")
+    global call_count
     call_count += 1
-    say("count = " + str(call_count))
+    print("うんち！")
+    say("ばなな!" + str(call_count))
 
 from th import pin
 p = pin(14)
