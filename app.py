@@ -17,7 +17,7 @@ def message_hello(message, say):
 from th import pin
 p = pin(14)
 
-@app.message("now")
+@app.message("!now")
 def message_now(message, say):
     # from th import pin
     # p = pin(14)
@@ -29,7 +29,7 @@ def message_now(message, say):
     say(notice)
     # del p
 
-@app.message("poweroff")
+@app.message("!poweroff")
 def message_poweroff(message, say):
     from PowerControl import PowerControl
     usb = PowerControl()
@@ -37,7 +37,7 @@ def message_poweroff(message, say):
     say("電源OFF")
     print("power off!")
 
-@app.message("poweron")
+@app.message("!poweron")
 def message_poweron(message, say):
     from PowerControl import PowerControl
     usb = PowerControl()
