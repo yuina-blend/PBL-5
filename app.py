@@ -58,4 +58,5 @@ if __name__ == "__main__":
         SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
     except:
         import sys
+        print('exception')
         sys.exit()
