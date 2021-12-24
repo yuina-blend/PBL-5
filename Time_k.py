@@ -8,12 +8,26 @@ class Time_k:
         self.now = []
         self.otime = []
 
+    # 現在時刻取得
     def kyusui(self):
         self.now = self.t.get_time()
         self.now = list(map(int, self.now.split(':')))
 
+        f = open('test.txt', 'w')
+        start = ''.join(str(self.start))
+        f.write('開始時刻 ')
+        f.write(start)
+        f.write('\n')
+        now = ''.join(str(self.now))
+        f.write('現在時刻 ')
+        f.write(now)
+        f.write('\n')
+        f.close()
+
         print(self.now)
 
+
+    # 稼働時間リセット
     def reset(self):
         for i in range(3):
             self.otime[i] = 0
@@ -21,8 +35,9 @@ class Time_k:
         self.start = list(map(int, self.start.split(':')))
         print("reset")
         print(self.otime)
-        
 
+
+    # 稼働時間読み込み
     def check(self):
         if self.now[2] < self.start[2]:
             self.now[2] += 60
@@ -51,7 +66,17 @@ class Time_k:
         print(self.otime)
         print(self.otime[2])
 
+        f = open('test.txt', 'a')
+        otime = ''.join(str(self.otime))
+        f.write('稼働時刻 ')
+        f.write(otime)
+        f.write('\n')
+        f.close()
+
+        # 加湿器の稼働時間条件
         if self.otime[1] > 3:
+            # 稼働時間内
             return self.otime
         else:
+            # 稼働時間外
             return "on"
