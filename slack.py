@@ -1,6 +1,6 @@
 
 class slack:
-    def slack(self,s):
+    def notice(self,s):
         import requests
         import json
         import os
